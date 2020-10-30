@@ -9,7 +9,6 @@ use Composer\Plugin\PluginInterface;
 use Composer\Repository\PathRepository;
 use Composer\Script\ScriptEvents;
 use Studio\Config\Config;
-use Studio\Config\FileStorage;
 
 class StudioPlugin implements PluginInterface, EventSubscriberInterface
 {
@@ -70,5 +69,13 @@ class StudioPlugin implements PluginInterface, EventSubscriberInterface
         $config = Config::make("{$targetDir}/studio.json");
 
         return $config->getPaths();
+    }
+
+    public function deactivate(Composer $composer, IOInterface $io)
+    {
+    }
+
+    public function uninstall(Composer $composer, IOInterface $io)
+    {
     }
 }
